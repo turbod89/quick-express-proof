@@ -1,0 +1,29 @@
+{
+  "local": {
+    "driver": "mysql",
+    "host": "DB_LOCAL_HOST",
+    "port": "DB_LOCAL_PORT",
+    "database": "DB_LOCAL_DATABASE",
+    "username": "DB_LOCAL_USERNAME",
+    "password": "DB_LOCAL_PASSWORD",
+    "charset": "DB_LOCAL_CHARSET", // utf8
+    "collation": "DB_LOCAL_COLLATION", // utf8_unicode_ci
+    "prefix": "DB_LOCAL_PREFIX", //
+    "timezone": "DB_LOCAL_TIMEZONE", // +00:00
+    "strict": "DB_LOCAL_STRICT_MODE" // false
+  },
+  "conn2": {
+    "driver": "mysql",
+    "host": "DB_CONN2_HOST",
+    "port": "DB_CONN2_PORT",
+    "database": "DB_CONN2_DATABASE",
+    "username": "DB_CONN2_USERNAME",
+    "password": "DB_CONN2_PASSWORD",
+    "charset": "DB_CONN2_CHARSET",
+    "collation": "DB_CONN2_COLLATION",
+    "prefix": "DB_CONN2_PREFIX",
+    "timezone": "DB_CONN2_TIMEZONE",
+    "strict": "DB_CONN2_STRICT_MODE"
+  },
+}
+
