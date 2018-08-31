@@ -3,23 +3,41 @@ const connection_settings = require('../config/database');
 
 
 
-Database = (function (settings) {
+const Database = (function (settings) {
 
-    const connections = {};
+    /*
+    * Each connection is a singleton
+    * */
+    const connectionInstances = {};
 
+    /*
+    * Class itself
+    * */
     const Database = function (conn_name) {
 
-        const db = this;
-
-        if (conn_name in connections) {
-            return connections[conn_name];
+        /*
+        * If exists return instance
+        * */
+        if (conn_name in connectionInstances) {
+            return connectionInstances[conn_name];
         }
 
+        /*
+        * If this connection does not exists return null
+        * */
         if ( !(conn_name in settings) ) {
             return null;
         }
 
-        // set connection
+        /*
+        * Set singleton instance
+        * */
+        const db = this;
+        connectionInstances[conn_name] = db;
+
+        /*
+        * Configuring connection settings
+        * */
         const set = settings[conn_name];
         db.connection =  mysql.createConnection({
             host: set.host,
@@ -28,7 +46,9 @@ Database = (function (settings) {
             port: set.port,
         });
 
-        // connect
+        /*
+        * Set connection to db
+        * */
         db.connection.connect(function(err) {
             if (err) {
                 console.error('error connecting: ' + err.stack);
@@ -38,8 +58,16 @@ Database = (function (settings) {
             console.log('connected as id ' + db.connection.threadId);
         });
 
+        /*
+        * Return singleton instance
+        * */
+        return db;
+
     };
 
+    /*
+    * Return class
+    * */
     return Database;
 
 })(connection_settings);

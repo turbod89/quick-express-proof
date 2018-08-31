@@ -1,0 +1,6 @@
+{
+  "giraffe_url": "http://localhost:2000",
+  "polling_to_giraffe_timeout": 30000,
+  "socket_port": 4000,
+  "http_port": 3000
+}
